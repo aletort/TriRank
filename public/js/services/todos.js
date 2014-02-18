@@ -1,4 +1,4 @@
-angular.module('todoService', [])
+angular.module('todoService', ['ngResource'])
 
 	// super simple service
 	// each function returns a promise object 
@@ -14,4 +14,10 @@ angular.module('todoService', [])
 				return $http.delete('/api/todos/' + id);
 			}
 		}
+	})
+	.factory('Athlete', function ($resource) {
+		return $resource( 'api/todos/:id', {}, 
+		{
+			save : {method : 'POST', isArray : true}
+		} );
 	});
