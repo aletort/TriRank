@@ -61,12 +61,8 @@ angular.module('triRankApp.controllers', [])
 
 		// DELETE ==================================================================
 		// delete a todo after checking it
-		$scope.deleteTodo = function(id) {
-			Athlete.delete(id)
-				// if successful creation, call our get function to get all the new todos
-				.success(function(data) {
-					$scope.todos = data; // assign our new list of todos
-				});
+		$scope.deleteTodo = function(idTodo) {
+			Athlete.delete({id : idTodo}, 0, function(data) { $scope.todos = data; })
 		};
 	})
 ;
